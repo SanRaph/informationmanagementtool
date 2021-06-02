@@ -9,5 +9,8 @@ class Info(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50, unique=True)
     phone = models.IntegerField(unique=True)
-    gender = models.IntegerField(choices=GENDER, default='Male')
-    created_at = models.DateTimeField(default=datetime.now(), blank=True)
+    gender = models.CharField(choices=GENDER, default='Male', blank=True, max_length=10)
+    created_at = models.DateTimeField(default=datetime.now, blank=True)
+
+    def __str__(self):
+        return self.name
